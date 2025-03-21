@@ -1,21 +1,21 @@
 # Kimai Assignment
 
 ## Overview
-Below are theree possible ways to deploy Kimai application in a Docker container:
+Below are theree possible ways to deploy Kimai application in Docker container:
 1. **Docker Compose** - Best for local or small deployments.
 2. **AWS ECS (Fargate or EC2)** - Best for managed container deployment.
-3. **Kubernetes (EKS, GKE, AKS, or self-hosted)** - Best for scalability and high availability.
+3. **Kubernetes (EKS, GKE, AKS, or self-hosted)** - Best for scaling and high availability.
 
 ---
 
-## Option 1: Docker Compose
+## Option 1: Docker Compose (Best for local or small deployments)
 ### **Architecture**
 - **Host Machine** (EC2 instance, VM, or bare metal server)
 - **Docker Daemon** (Runs containers)
 - **Docker Compose** (Orchestrates multi-container applications)
 - **Kimai Container** (Application service)
-- **MariaDB/PostgreSQL Container** (Database service)
-- **Reverse Proxy (NGINX/Traefik)** (Optional, for SSL and routing)
+- **database Container** (Database service)
+- **Reverse Proxy (NGINX)** (Optional, for SSL and routing)
 
 ### **Pros**
 - Easy to set up and manage.
