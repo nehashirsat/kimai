@@ -63,7 +63,27 @@ Below are theree possible ways to deploy Kimai application in Docker container:
 - Higher complexity and operational overhead.
 - Requires Kubernetes knowledge.
 
-### **Use Case**
-- Best for large-scale production deployments that require resilience and flexibility.
+
+## EKS Deployment Architecture for Kimai
+The diagram represents a highly available and scalable architecture for deploying the Kimai application using AWS EKS.
+
+![Kimai drawio](https://github.com/user-attachments/assets/b3623e4c-14e7-4c9f-9707-f47d3dacfa36)
+
+
+### **Components Explained:**
+- **VPC**: The entire infrastructure is deployed within a Virtual Private Cloud (VPC) for security and networking control.
+- **Internet Gateway**: Allows public internet access for users interacting with the application.
+- **Public Subnets**: Contains NAT Gateways to enable outbound internet access for private instances.
+- **Private Subnets**: Houses the EKS cluster, keeping the Kimai application isolated from the public internet.
+- **EKS Cluster**: Kubernetes cluster running the Kimai application in a managed environment.
+- **Node Groups**: Consist of multiple worker nodes running in private subnets.
+- **Kimai Deployment**: Runs within Kubernetes pods, ensuring scalability and availability.
+- **AWS RDS (Master & Read Replica)**: Managed relational database for Kimai, ensuring data durability and read scalability.
+- **Amazon EFS**: Provides shared storage across multiple pods and ensures persistent storage.
+- **Application Load Balancer (ALB)**: Distributes incoming traffic to the Kimai service running in EKS.
+- **Service (SVC)**: Manages internal communication between application pods and backend services.
+- **Replication**: Ensures high availability by syncing data between the RDS master and read replica.
+
+This architecture is designed for **high availability, auto-scaling, and security**, making it the best choice for enterprise-scale Kimai deployments.
 
 
