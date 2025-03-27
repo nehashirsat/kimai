@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  kimai:
+    image: kimai/kimai2:apache
+    container_name: kimai
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - ADMINMAIL=admin@example.com
+      - ADMINPASS=securepassword
+      - DATABASE_URL=mysql://kimai:kimai@db/kimai
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8.0
+    container_name: kimai_db
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=kimai
+      - MYSQL_USER=kimai
+      - MYSQL_PASSWORD=kimai
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
