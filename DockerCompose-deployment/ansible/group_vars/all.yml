@@ -1,8 +1,1 @@
-kimai_port: "8080"
-kimai_admin_email: "admin@example.com"
-kimai_admin_password: "securepassword"
-mysql_root_password: "rootpassword"
-mysql_user: "kimai"
-mysql_password: "kimai"
-mysql_database: "kimai"
 ansible_user: "ansible"
